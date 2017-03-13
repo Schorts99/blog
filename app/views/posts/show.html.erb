@@ -1,0 +1,8 @@
+<div class="well">
+  <h2 class="page-header"><%= @post.title %></h2>
+  <small>Publicado por <%= @post.user.name %> el <%= @post.created_at.to_time.
+  strftime('%e %B a las %l:%M %p') %></small>
+  <%= image_tag @post.image.url, width:'100%' %>
+  <%= raw @post.body %>
+</div>
+<%= render 'partials/comments' %>

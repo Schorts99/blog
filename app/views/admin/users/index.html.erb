@@ -1,0 +1,21 @@
+<h2 class="page-header">Administración de usuarios <%= link_to 'Agregar nuevo',
+new_admin_user_path, class:'btn btn-success pull-right' %></h2>
+<table class="table table-striped">
+  <tr>
+    <th>Nombre</th>
+    <th>Correo electrónico</th>
+    <th>Fecha de creación</th>
+    <th>Acciones</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.created_at.to_time.strftime('%e %B a las %l:%M %p') %></td>
+      <td><%= link_to 'Editar', edit_admin_user_path(user), class:'btn btn-primary' %>
+      <%= link_to 'Eliminar', admin_user_path(user), method: :delete, data: { confirm: 'Estas seguro?' },
+      class:'btn btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @posts %>

@@ -1,0 +1,21 @@
+<h2 class="page-header">Administración de publicaciones <%= link_to 'Agregar nueva',
+new_admin_post_path, class:'btn btn-success pull-right' %></h2>
+<table class="table table-striped">
+  <tr>
+    <th>Titulo</th>
+    <th>Categoría</th>
+    <th>Fecha de creación</th>
+    <th>Acciones</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.category.name %></td>
+      <td><%= post.created_at.to_time.strftime('%e %B a las %l:%M %p') %></td>
+      <td><%= link_to 'Editar', edit_admin_post_path(post), class:'btn btn-primary' %>
+      <%= link_to 'Eliminar', admin_post_path(post), method: :delete, data: { confirm: 'Estas seguro?' },
+      class:'btn btn-danger' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @posts %>

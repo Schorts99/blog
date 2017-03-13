@@ -1,0 +1,22 @@
+<h2><%= @category.name %></h2>
+<div id="posts-index">
+  <% @posts.each_slice(2) do |post| %>
+    <div class="row">
+      <% post.each do |post| %>
+        <div class="col-md-6">
+          <div class="post">
+            <%= image_tag post.image.url, width:'100%' %>
+            <div class="post-content">
+              <h3><%= post.title %></h3>
+              <small>Publicado por <%= post.user.name %> el
+              <%= post.created_at.to_time.strftime('%e %B a las %l:%M %p') %></small>
+              <%= raw post.body.truncate(200) %>
+              <%= link_to 'Leer más', post_path(post), class:'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <%= will_paginate @posts %>
+</div>

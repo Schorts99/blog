@@ -1,0 +1,28 @@
+<% if params[:controller] == 'admin/posts' %>
+  <%= form_tag(admin_posts_path, method: :get, id: 'search-form', class:'search-form
+  pull-right') do  %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder:'Buscar publicaciones',
+      class:'form-control' %>
+    </div>
+    <%= submit_tag 'Buscar', name: nil, class:'btn btn-primary' %>
+  <% end %>
+<% elsif params[:controller] == 'admin/categories' %>
+  <%= form_tag(admin_categories_path, method: :get, id: 'search-form', class:'search-form
+  pull-right') do  %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder:'Buscar categorias',
+      class:'form-control' %>
+    </div>
+    <%= submit_tag 'Buscar', name: nil, class:'btn btn-primary' %>
+  <% end %>
+<% elsif params[:controller] == 'admin/users'  %>
+  <%= form_tag(admin_users_path, method: :get, id: 'search-form', class:'search-form
+  pull-right') do  %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder:'Buscar usuarios',
+      class:'form-control' %>
+    </div>
+    <%= submit_tag 'Buscar', name: nil, class:'btn btn-primary' %>
+  <% end %>
+<% end %>

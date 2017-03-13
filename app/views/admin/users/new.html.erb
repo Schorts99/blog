@@ -1,0 +1,29 @@
+<h2>Agregar nuevo usuario</h2>
+<%= form_for [:admin, @user] do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger">
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :name, 'Nombre' %>
+    <%= f.text_field :name, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, 'Correo electrónico' %>
+    <%= f.email_field :email, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, 'Contraseña' %>
+    <%= f.password_field :password, class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'Confirmar contraseña' %>
+    <%= f.password_field :password_confirmation, class:'form-control' %>
+  </div>
+  <br>
+  <%= f.submit 'Agregar', class:'btn btn-primary' %>
+  <%= link_to 'Cancelar', admin_categories_path, class:'btn btn-default' %>
+<% end %>
